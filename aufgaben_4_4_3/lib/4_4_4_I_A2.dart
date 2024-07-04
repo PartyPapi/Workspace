@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('SizedBox Exercise'),
+          title: const Text('SizedBox Exercise'),
         ),
         body: Center(
           child: Column(
@@ -20,31 +22,31 @@ class MyApp extends StatelessWidget {
                 color: Colors.blue,
                 width: 120,
                 height: 120,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Box 1',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 color: Colors.green,
                 width: 160,
                 height: 80,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Box 2',
                     style: TextStyle(color: Colors.white),
                   ),
                 ),
               ),
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Container(
                 color: Colors.red,
                 width: 80,
                 height: 160,
-                child: Center(
+                child: const Center(
                   child: Text(
                     'Box 3',
                     style: TextStyle(color: Colors.white),

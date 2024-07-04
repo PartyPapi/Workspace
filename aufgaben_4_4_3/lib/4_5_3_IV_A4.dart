@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('AlertDialog und Snackbar Beispiel'),
+          title: const Text('AlertDialog und Snackbar Beispiel'),
         ),
-        body: MyHomePage(),
+        body: const MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   void _showAlertDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Titel'),
-          content: Text('Dies ist eine Nachricht im AlertDialog.'),
+          title: const Text('AlertDialog Titel'),
+          content: const Text('Dies ist eine Nachricht im AlertDialog.'),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
                 _showSnackbar(context);
@@ -42,7 +46,7 @@ class MyHomePage extends StatelessWidget {
 
   void _showSnackbar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Snackbar-Nachricht nach Alarm'),
       ),
     );
@@ -53,7 +57,7 @@ class MyHomePage extends StatelessWidget {
     return Center(
       child: ElevatedButton(
         onPressed: () => _showAlertDialog(context),
-        child: Text('Zeige AlertDialog'),
+        child: const Text('Zeige AlertDialog'),
       ),
     );
   }

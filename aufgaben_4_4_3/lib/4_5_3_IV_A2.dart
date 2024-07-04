@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('AlertDialog Beispiel'),
+          title: const Text('AlertDialog Beispiel'),
         ),
-        body: Center(
+        body: const Center(
           child: MyHomePage(),
         ),
       ),
@@ -21,22 +23,24 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   void _showAlertDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Titel'),
-          content: Text('Dies ist eine Nachricht im AlertDialog.'),
+          title: const Text('AlertDialog Titel'),
+          content: const Text('Dies ist eine Nachricht im AlertDialog.'),
           actions: <Widget>[
             TextButton(
-              child: Text('Abbrechen'),
+              child: const Text('Abbrechen'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
             ),
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -51,7 +55,7 @@ class MyHomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => _showAlertDialog(context),
-      child: Text('Alarmaaaaa!'),
+      child: const Text('Alarmaaaaa!'),
     );
   }
 }

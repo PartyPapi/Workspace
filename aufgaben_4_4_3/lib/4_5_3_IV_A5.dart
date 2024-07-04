@@ -1,34 +1,38 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Komplexe Benutzeroberfläche'),
+          title: const Text('Komplexe Benutzeroberfläche'),
         ),
-        body: MyHomePage(),
+        body: const MyHomePage(),
       ),
     );
   }
 }
 
 class MyHomePage extends StatelessWidget {
+  const MyHomePage({super.key});
+
   void _showAlertDialog(BuildContext context) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text('AlertDialog Titel'),
-          content: Text('jetzt folgt eine Snackbar'),
+          title: const Text('AlertDialog Titel'),
+          content: const Text('jetzt folgt eine Snackbar'),
           actions: <Widget>[
             TextButton(
-              child: Text('OK'),
+              child: const Text('OK'),
               onPressed: () {
                 Navigator.of(context).pop();
                 _showSnackbar(context);
@@ -42,7 +46,7 @@ class MyHomePage extends StatelessWidget {
 
   void _showSnackbar(BuildContext context) {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(
+      const SnackBar(
         content: Text('Dies ist eine Snackbar-Nachricht.'),
       ),
     );
@@ -54,9 +58,9 @@ class MyHomePage extends StatelessWidget {
       children: <Widget>[
         GestureDetector(
           onTap: () => _showAlertDialog(context),
-          child: Card(
+          child: const Card(
             child: Padding(
-              padding: const EdgeInsets.all(16.0),
+              padding: EdgeInsets.all(16.0),
               child: Row(
                 children: <Widget>[
                   Icon(Icons.info, color: Colors.blue),
@@ -70,20 +74,20 @@ class MyHomePage extends StatelessWidget {
             ),
           ),
         ),
-        Divider(),
+        const Divider(),
         Card(
           child: Padding(
             padding: const EdgeInsets.all(16.0),
             child: Row(
               children: <Widget>[
-                Icon(Icons.message, color: Colors.green),
-                SizedBox(width: 16.0),
-                Expanded(
+                const Icon(Icons.message, color: Colors.green),
+                const SizedBox(width: 16.0),
+                const Expanded(
                   child: Text(
                       'Zweite Karte: Drücke den Button für eine Snackbar.'),
                 ),
                 TextButton(
-                  child: Text('Button'),
+                  child: const Text('Button'),
                   onPressed: () => _showSnackbar(context),
                 ),
               ],
