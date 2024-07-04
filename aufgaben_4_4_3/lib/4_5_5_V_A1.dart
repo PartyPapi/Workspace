@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Red Container with Snackbar'),
+          title: const Text('Red Container with Snackbar'),
         ),
-        body: Center(
+        body: const Center(
           child: RedContainer(),
         ),
       ),
@@ -21,11 +23,13 @@ class MyApp extends StatelessWidget {
 }
 
 class RedContainer extends StatelessWidget {
+  const RedContainer({super.key});
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        final snackBar = SnackBar(
+        const snackBar = SnackBar(
           content: Text('Container was tapped!'),
         );
 
