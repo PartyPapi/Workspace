@@ -30,7 +30,7 @@ class MyHomePage extends StatelessWidget {
         return AlertDialog(
           title: const Text('AlertDialog Titel'),
           content: const Text('Dies ist eine Nachricht im AlertDialog.'),
-          actions: <Widget>[
+          actions: [
             TextButton(
               child: const Text('OK'),
               onPressed: () {
