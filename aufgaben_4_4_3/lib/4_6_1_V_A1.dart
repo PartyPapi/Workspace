@@ -39,7 +39,7 @@ class ProdukteScreen extends StatelessWidget {
             ),
           );
         },
-        child: Icon(Icons.shopping_cart),
+        child: Icon(Icons.shopping_cart), // Verwende ein beliebiges Icon
       ),
     );
   }
@@ -53,21 +53,38 @@ class DetailScreen extends StatelessWidget {
         title: Text('Details zu Hemd'),
       ),
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Text(
-              'Hemd',
-              style: TextStyle(fontSize: 24),
-            ),
-            SizedBox(height: 8),
-            Text('Ein Hemd das wirklich gut passt'),
-            SizedBox(height: 8),
-            Text(
-              'Preis: 49,99 €',
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-          ],
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
+            children: <Widget>[
+              SizedBox(height: 20),
+              Text(
+                'Hemd',
+                style: TextStyle(
+                  fontSize: 32,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Ein Hemd das wirklich gut passt',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
+              ),
+              SizedBox(height: 10),
+              Text(
+                'Preis: 49,99 €',
+                style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
         ),
       ),
     );
