@@ -84,17 +84,19 @@ class NewsScreen extends StatelessWidget {
 class LikesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Container(
+      width: double.infinity, // Take up full width available
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment:
+            MainAxisAlignment.start, // Align content at the top vertically
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Center content horizontally
         children: <Widget>[
-          SizedBox(height: 20), // Abstand von oben
+          SizedBox(height: 20), // Space from the top
           Text(
             'Hier findest du deine gelikten Nachrichten.',
             style: TextStyle(fontSize: 24),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.center, // Center text horizontally
           ),
         ],
       ),
@@ -105,19 +107,21 @@ class LikesScreen extends StatelessWidget {
 class ProfileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16.0),
+    return Container(
+      width: double.infinity, // Take up full width available
       child: Column(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment:
+            MainAxisAlignment.start, // Align content at the top vertically
+        crossAxisAlignment:
+            CrossAxisAlignment.center, // Center content horizontally
         children: <Widget>[
-          SizedBox(height: 20), // Abstand von oben
+          SizedBox(height: 20), // Space from the top
           Icon(Icons.person, size: 100),
-          SizedBox(height: 20), // Abstand zwischen Icon und Text
+          SizedBox(height: 20), // Space between Icon and Text
           Text(
             'Max Mustermann',
             style: TextStyle(fontSize: 24),
-            textAlign: TextAlign.center,
+            textAlign: TextAlign.center, // Center text horizontally
           ),
         ],
       ),
