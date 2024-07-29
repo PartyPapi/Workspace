@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,7 +14,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProdukteScreen(),
+      home: const ProdukteScreen(),
     );
   }
 }
@@ -30,6 +32,8 @@ class Produkt {
 }
 
 class ProdukteScreen extends StatelessWidget {
+  const ProdukteScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     final Produkt produkt = Produkt(
@@ -40,9 +44,9 @@ class ProdukteScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Produkte'),
+        title: const Text('Produkte'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Schaue ein schönes Produkt an,\nindem du auf den FAB drückst',
           textAlign: TextAlign.center,
@@ -57,7 +61,7 @@ class ProdukteScreen extends StatelessWidget {
             ),
           );
         },
-        child: Icon(Icons.shopping_cart),
+        child: const Icon(Icons.shopping_cart),
       ),
     );
   }
@@ -66,7 +70,7 @@ class ProdukteScreen extends StatelessWidget {
 class DetailScreen extends StatelessWidget {
   final Produkt produkt;
 
-  DetailScreen({required this.produkt});
+  const DetailScreen({super.key, required this.produkt});
 
   @override
   Widget build(BuildContext context) {
@@ -81,15 +85,15 @@ class DetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 20),
+              const SizedBox(height: 20),
               Text(
                 produkt.name,
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 produkt.beschreibung,
                 style: TextStyle(
@@ -97,10 +101,10 @@ class DetailScreen extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'Preis: ${produkt.preis.toStringAsFixed(2)} €',
-                style: TextStyle(
+                style: const TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),

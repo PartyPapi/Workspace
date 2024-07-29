@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,19 +14,21 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ProdukteScreen(),
+      home: const ProdukteScreen(),
     );
   }
 }
 
 class ProdukteScreen extends StatelessWidget {
+  const ProdukteScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Produkte'),
+        title: const Text('Produkte'),
       ),
-      body: Center(
+      body: const Center(
         child: Text(
           'Schaue ein schönes Produkt an,\nindem du auf den FAB drückst',
           textAlign: TextAlign.center,
@@ -35,22 +39,24 @@ class ProdukteScreen extends StatelessWidget {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => DetailScreen(),
+              builder: (context) => const DetailScreen(),
             ),
           );
         },
-        child: Icon(Icons.shopping_cart), // Verwende ein beliebiges Icon
+        child: const Icon(Icons.shopping_cart), // Verwende ein beliebiges Icon
       ),
     );
   }
 }
 
 class DetailScreen extends StatelessWidget {
+  const DetailScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Details zu Hemd'),
+        title: const Text('Details zu Hemd'),
       ),
       body: Center(
         child: Padding(
@@ -59,15 +65,15 @@ class DetailScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              SizedBox(height: 20),
-              Text(
+              const SizedBox(height: 20),
+              const Text(
                 'Hemd',
                 style: TextStyle(
                   fontSize: 32,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              SizedBox(height: 10),
+              const SizedBox(height: 10),
               Text(
                 'Ein Hemd das wirklich gut passt',
                 style: TextStyle(
@@ -75,8 +81,8 @@ class DetailScreen extends StatelessWidget {
                   color: Colors.grey[600],
                 ),
               ),
-              SizedBox(height: 10),
-              Text(
+              const SizedBox(height: 10),
+              const Text(
                 'Preis: 49,99 €',
                 style: TextStyle(
                   fontSize: 20,

@@ -1,19 +1,21 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Cards with Icon and Text'),
+          title: const Text('Cards with Icon and Text'),
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
+        body: const Padding(
+          padding: EdgeInsets.all(16.0),
           child: Column(
             children: <Widget>[
               CustomCard(
@@ -37,7 +39,7 @@ class CustomCard extends StatelessWidget {
   final IconData icon;
   final String text;
 
-  CustomCard({required this.icon, required this.text});
+  const CustomCard({super.key, required this.icon, required this.text});
 
   @override
   Widget build(BuildContext context) {
@@ -48,10 +50,10 @@ class CustomCard extends StatelessWidget {
         child: Row(
           children: <Widget>[
             Icon(icon, size: 40.0),
-            SizedBox(width: 16.0),
+            const SizedBox(width: 16.0),
             Text(
               text,
-              style: TextStyle(fontSize: 24.0),
+              style: const TextStyle(fontSize: 24.0),
             ),
           ],
         ),

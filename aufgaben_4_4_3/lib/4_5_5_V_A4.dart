@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Scrollable List of Text Widgets'),
+          title: const Text('Scrollable List of Text Widgets'),
         ),
         body: SingleChildScrollView(
           child: Column(
@@ -19,7 +21,7 @@ class MyApp extends StatelessWidget {
                 padding: const EdgeInsets.all(8.0),
                 child: Text(
                   'Item ${index + 1}',
-                  style: TextStyle(fontSize: 18),
+                  style: const TextStyle(fontSize: 18),
                 ),
               );
             }),

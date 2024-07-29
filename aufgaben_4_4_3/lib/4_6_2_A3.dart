@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -12,12 +14,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.yellow,
       ),
-      home: AppHome(),
+      home: const AppHome(),
     );
   }
 }
 
 class AppHome extends StatefulWidget {
+  const AppHome({super.key});
+
   @override
   _AppHomeState createState() => _AppHomeState();
 }
@@ -26,9 +30,9 @@ class _AppHomeState extends State<AppHome> {
   int currentIndex = 0;
 
   final List<Widget> screens = [
-    NewsScreen(),
-    LikesScreen(),
-    ProfileScreen(),
+    const NewsScreen(),
+    const LikesScreen(),
+    const ProfileScreen(),
   ];
 
   void onDestinationSelected(int index) {
@@ -41,7 +45,7 @@ class _AppHomeState extends State<AppHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('MyApp'),
+        title: const Text('MyApp'),
       ),
       body: screens[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
@@ -67,9 +71,11 @@ class _AppHomeState extends State<AppHome> {
 }
 
 class NewsScreen extends StatelessWidget {
+  const NewsScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Center(
+    return const Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
@@ -82,9 +88,11 @@ class NewsScreen extends StatelessWidget {
 }
 
 class LikesScreen extends StatelessWidget {
+  const LikesScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,
@@ -103,9 +111,11 @@ class LikesScreen extends StatelessWidget {
 }
 
 class ProfileScreen extends StatelessWidget {
+  const ProfileScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return const SizedBox(
       width: double.infinity,
       child: Column(
         mainAxisAlignment: MainAxisAlignment.start,

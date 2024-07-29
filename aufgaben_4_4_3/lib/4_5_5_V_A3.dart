@@ -1,18 +1,20 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
-          title: Text('Persistent Bottom Sheet Example'),
+          title: const Text('Persistent Bottom Sheet Example'),
         ),
-        body: Center(
+        body: const Center(
           child: OpenBottomSheetButton(),
         ),
       ),
@@ -21,21 +23,23 @@ class MyApp extends StatelessWidget {
 }
 
 class OpenBottomSheetButton extends StatelessWidget {
+  const OpenBottomSheetButton({super.key});
+
   void _showPersistentBottomSheet(BuildContext context) {
     showBottomSheet(
       context: context,
       builder: (BuildContext context) {
         return Container(
           color: Colors.white,
-          padding: EdgeInsets.all(16.0),
+          padding: const EdgeInsets.all(16.0),
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: <Widget>[
-              Text(
+              const Text(
                 'This is a persistent bottom sheet',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              Divider(),
+              const Divider(),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
@@ -43,9 +47,9 @@ class OpenBottomSheetButton extends StatelessWidget {
                     onPressed: () {
                       Navigator.pop(context);
                     },
-                    child: Text('Close'),
+                    child: const Text('Close'),
                   ),
-                  Icon(Icons.info, size: 24.0),
+                  const Icon(Icons.info, size: 24.0),
                 ],
               ),
             ],
@@ -59,7 +63,7 @@ class OpenBottomSheetButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       onPressed: () => _showPersistentBottomSheet(context),
-      child: Text('Show Persistent Bottom Sheet'),
+      child: const Text('Show Persistent Bottom Sheet'),
     );
   }
 }
