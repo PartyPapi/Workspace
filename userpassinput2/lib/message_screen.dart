@@ -11,6 +11,7 @@ class _MessageScreenState extends State<MessageScreen> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   bool _hidePassword = true;
+  bool _showError = false;
 
   @override
   void dispose() {
@@ -26,8 +27,18 @@ class _MessageScreenState extends State<MessageScreen> {
     if (name == 'Ralf' && password == 'letsgo') {
       Navigator.pushReplacementNamed(context, '/welcome');
     } else {
-      Navigator.pushReplacementNamed(context, '/custom_form');
+      setState(() {
+        _showError = true;
+      });
     }
+  }
+
+  void _retry() {
+    setState(() {
+      _showError = false;
+      _nameController.clear();
+      _passwordController.clear();
+    });
   }
 
   @override
@@ -42,36 +53,69 @@ class _MessageScreenState extends State<MessageScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            TextField(
-              controller: _nameController,
-              decoration: const InputDecoration(
-                labelText: "Name",
-              ),
-            ),
-            const SizedBox(height: 16),
-            showHidePassword(
-              hidePassword: _hidePassword,
-              passwordField: (hidePassword) {
-                return TextFormField(
-                  controller: _passwordController,
-                  obscureText: hidePassword,
-                  obscuringCharacter: "*",
-                  decoration: const InputDecoration(
-                    border: OutlineInputBorder(),
-                    label: Text("Password"),
-                    hintText: "password",
+            if (_showError)
+              Column(
+                children: [
+                  const Text(
+                    "Sie haben leider eine falsche Name/Passwortkombination eingegeben. Möchten Sie mit einer neuen Anmeldung fortfahren oder es nochmal versuchen?",
+                    style: TextStyle(color: Colors.red),
                   ),
-                );
-              },
-              iconSize: 18,
-              visibleOffIcon: Icons.visibility,
-              visibleOnIcon: Icons.visibility_off,
-            ),
-            const SizedBox(height: 16),
-            ElevatedButton(
-              onPressed: _signIn,
-              child: const Text("Sign In"),
-            ),
+                  const SizedBox(height: 16),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      ElevatedButton(
+                        onPressed: _retry,
+                        child: const Text("Zurück"),
+                      ),
+                      const SizedBox(width: 16),
+                      ElevatedButton(
+                        onPressed: () {
+                          Navigator.pushReplacementNamed(
+                              context, '/custom_form');
+                        },
+                        child: const Text("Weiter"),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: 16),
+                ],
+              ),
+            if (!_showError)
+              Column(
+                children: [
+                  TextField(
+                    controller: _nameController,
+                    decoration: const InputDecoration(
+                      labelText: "Name",
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  showHidePassword(
+                    hidePassword: _hidePassword,
+                    passwordField: (hidePassword) {
+                      return TextFormField(
+                        controller: _passwordController,
+                        obscureText: hidePassword,
+                        obscuringCharacter: "*",
+                        decoration: const InputDecoration(
+                          border: OutlineInputBorder(),
+                          label: Text("Password"),
+                          hintText: "password",
+                        ),
+                      );
+                    },
+                    iconSize: 18,
+                    visibleOffIcon: Icons.visibility,
+                    visibleOnIcon: Icons.visibility_off,
+                  ),
+                  const SizedBox(height: 16),
+                  ElevatedButton(
+                    onPressed: _signIn,
+                    child: const Text("Sign In"),
+                  ),
+                ],
+              ),
           ],
         ),
       ),
