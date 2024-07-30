@@ -54,32 +54,46 @@ class _MessageScreenState extends State<MessageScreen> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             if (_showError)
-              Column(
-                children: [
-                  const Text(
-                    "Sie haben leider eine falsche Name/Passwortkombination eingegeben. Möchten Sie mit einer neuen Anmeldung fortfahren oder es nochmal versuchen?",
-                    style: TextStyle(color: Colors.red),
-                  ),
-                  const SizedBox(height: 16),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      ElevatedButton(
-                        onPressed: _retry,
-                        child: const Text("Zurück"),
-                      ),
-                      const SizedBox(width: 16),
-                      ElevatedButton(
-                        onPressed: () {
-                          Navigator.pushReplacementNamed(
-                              context, '/custom_form');
-                        },
-                        child: const Text("Weiter"),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(height: 16),
-                ],
+              Container(
+                padding: const EdgeInsets.all(16),
+                decoration: BoxDecoration(
+                  color: Colors.red.withOpacity(0.1),
+                  borderRadius: BorderRadius.circular(10),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.black12,
+                      blurRadius: 5,
+                      offset: Offset(0, 5),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  children: [
+                    const Text(
+                      "Sie haben leider eine falsche Name/Passwortkombination eingegeben. Möchten Sie mit einer neuen Anmeldung fortfahren oder es nochmal versuchen?",
+                      style: TextStyle(color: Colors.red),
+                    ),
+                    const SizedBox(height: 16),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        ElevatedButton(
+                          onPressed: _retry,
+                          child: const Text("Zurück"),
+                        ),
+                        const SizedBox(width: 16),
+                        ElevatedButton(
+                          onPressed: () {
+                            Navigator.pushReplacementNamed(
+                                context, '/custom_form');
+                          },
+                          child: const Text("Weiter"),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: 16),
+                  ],
+                ),
               ),
             if (!_showError)
               Column(
