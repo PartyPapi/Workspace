@@ -26,6 +26,9 @@ class MyCustomForm extends StatefulWidget {
 
 class MyCustomFormState extends State<MyCustomForm> {
   final _formKey = GlobalKey<FormState>();
+  final _nameController = TextEditingController();
+  final _companyController = TextEditingController();
+  final _passwordController = TextEditingController();
 
   String? _validateName(String? value) {
     final regex = RegExp(r'^[a-zA-Z0-9 ]+$');
@@ -67,14 +70,17 @@ class MyCustomFormState extends State<MyCustomForm> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
           TextFormField(
+            controller: _nameController,
             decoration: InputDecoration(labelText: 'Name'),
             validator: _validateName,
           ),
           TextFormField(
+            controller: _companyController,
             decoration: InputDecoration(labelText: 'Company'),
             validator: _validateCompany,
           ),
           TextFormField(
+            controller: _passwordController,
             decoration: InputDecoration(labelText: 'Password'),
             obscureText: true,
             validator: _validatePassword,
@@ -84,8 +90,29 @@ class MyCustomFormState extends State<MyCustomForm> {
             child: ElevatedButton(
               onPressed: () {
                 if (_formKey.currentState!.validate()) {
-                  ScaffoldMessenger.of(context)
-                      .showSnackBar(SnackBar(content: Text('Processing Data')));
+                  String name = _nameController.text;
+                  String company = _companyController.text;
+                  String password = '*' * _passwordController.text.length;
+
+                  showDialog(
+                    context: context,
+                    builder: (BuildContext context) {
+                      return AlertDialog(
+                        title: Text('Submitted Data'),
+                        content: Text(
+                          'Name: $name\nCompany: $company\nPassword: $password',
+                        ),
+                        actions: <Widget>[
+                          TextButton(
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                            child: Text('OK'),
+                          ),
+                        ],
+                      );
+                    },
+                  );
                 }
               },
               child: Text('Submit'),
