@@ -2,13 +2,15 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(TimerApp());
+  runApp(TimerApp()); //wird aufgerufen und kann in anderen Ordner
 }
 
 class TimerApp extends StatelessWidget {
+  //stateless weil hier nur die Appstruktur definiert wird
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      //erstellt MaterialApp mit der Startseite TimerHomePage
       title: 'Timer App',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -19,20 +21,23 @@ class TimerApp extends StatelessWidget {
 }
 
 class TimerHomePage extends StatefulWidget {
+  //der Status ändert sich beim Laufen ständig
   @override
-  _TimerHomePageState createState() => _TimerHomePageState();
+  _TimerHomePageState createState() =>
+      _TimerHomePageState(); //Logik und Zustand der TimerHomePage
 }
 
 class _TimerHomePageState extends State<TimerHomePage> {
-  int _timerDuration = 0; // Eingestellte Zeit in Sekunden
+  int _timerDuration = 0; // Voreingestellte Zeit in Sekunden
   int _remainingTime = 0; // Verbleibende Zeit in Sekunden
-  bool _isRunning = false;
-  bool _isPaused = false;
-  bool _isStopped = false;
-  bool _isInverted = false; // Zustand für invertierte Farben
-  Timer? _timer;
+  bool _isRunning = false; //läuft gerade?
+  bool _isPaused = false; //ist gerade pausiert?
+  bool _isStopped = false; //wurde zuletzt gestoppt (wegen reset oder restart)
+  bool _isInverted = false; //Zustand für invertierte Farben
+  Timer? _timer; //das Timer-Objekt, welches die periodischen Updates steuert
 
-  TextEditingController _controller = TextEditingController();
+  TextEditingController _controller =
+      TextEditingController(); //Benutzereingabe Timerlänge
 
   void _toggleTimer() {
     if (_isRunning) {
