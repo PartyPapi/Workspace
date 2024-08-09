@@ -59,13 +59,13 @@ class _TimerHomePageState extends State<TimerHomePage> {
     });
 
     _timer = Timer.periodic(Duration(seconds: 1), (Timer timer) async {
+      setState(() {
+        _remainingTime--;
+      });
+
       if (_remainingTime <= 0) {
         _stopTimer();
         await _onTimerComplete();
-      } else {
-        setState(() {
-          _remainingTime--;
-        });
       }
     });
   }
