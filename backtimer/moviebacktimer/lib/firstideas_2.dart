@@ -40,6 +40,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
       TextEditingController(); //Benutzereingabe Timerlänge
 
   void _toggleTimer() {
+    //toggelt die Pause/Startfunktion
     if (_isRunning) {
       _pauseTimer();
     } else {
@@ -48,10 +49,12 @@ class _TimerHomePageState extends State<TimerHomePage> {
   }
 
   void _startTimer() {
-    if (_timerDuration <= 0 && _remainingTime <= 0) return;
+    if (_timerDuration <= 0 && _remainingTime <= 0)
+      return; //prüft, ob es überhaupt
+    //sinnvoll ist, den Timer zu starten (eingestellte Zeit und verbleibende Zeit Gleich "0"?)
 
     if (_isStopped) {
-      // Wenn Timer gestoppt war, Zeit zurücksetzen
+      // Wenn Timer gestoppt war, Zeit zurücksetzen mit Stop-Taste
       setState(() {
         _remainingTime = _timerDuration;
         _isStopped = false;
@@ -59,6 +62,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
     }
 
     setState(() {
+      //Status läuft?
       _isRunning = true;
       _isPaused = false;
     });
@@ -69,6 +73,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
       });
 
       if (_remainingTime <= 0) {
+        //beim Ende anhalten
         _stopTimer();
         await _onTimerComplete();
       }
@@ -76,14 +81,16 @@ class _TimerHomePageState extends State<TimerHomePage> {
   }
 
   void _pauseTimer() {
+    //Pausensteuerung über die Start-Taste
     setState(() {
       _isRunning = false;
       _isPaused = true;
     });
-    _timer?.cancel();
+    _timer?.cancel(); //Stop
   }
 
   void _stopTimer() {
+    //Stop aus Lauf oder Pause heraus
     if (_isRunning || _isPaused) {
       // Timer anhalten
       setState(() {
@@ -104,6 +111,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
   }
 
   Future<void> _onTimerComplete() async {
+    //das Flackern am Ende
     for (int i = 0; i < 15; i++) {
       // 15 Mal flackern (5 pro Sekunde für 3 Sekunden)
       await Future.delayed(Duration(milliseconds: 200));
@@ -112,7 +120,7 @@ class _TimerHomePageState extends State<TimerHomePage> {
       });
     }
     setState(() {
-      _isInverted = false; // Farben zurücksetzen
+      _isInverted = false; // Farben wieder zurücksetzen
     });
   }
 
